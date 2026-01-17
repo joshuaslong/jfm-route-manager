@@ -3,6 +3,11 @@ import { PageHeader } from '@/components/layout/PageHeader';
 
 const adminSections = [
   {
+    title: 'Users',
+    description: 'Manage user accounts and permissions',
+    href: '/admin/users',
+  },
+  {
     title: 'Drivers',
     description: 'Manage delivery drivers',
     href: '/admin/drivers',
