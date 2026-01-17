@@ -5,11 +5,16 @@ import { usePathname } from 'next/navigation';
 import { getTodayDate } from '@/lib/utils/dateHelpers';
 import { useAuth } from '@/lib/auth/AuthContext';
 
-function getNavItems(isAdmin: boolean) {
+function getNavItems(department: string, isAdmin: boolean) {
   const today = getTodayDate();
+  const items: { label: string; href: string; children?: { label: string; href: string }[] }[] = [];
 
-  const items = [
-    {
+  // Admin sees all sections
+  // Shipping users only see Shipping
+  // Transportation users only see Transportation
+
+  if (isAdmin || department === 'transportation') {
+    items.push({
       label: 'Transportation',
       href: `/transportation/day/${today}`,
       children: [
@@ -17,8 +22,11 @@ function getNavItems(isAdmin: boolean) {
         { label: 'Templates', href: '/transportation/templates' },
         { label: 'Planning', href: '/transportation/planning' },
       ],
-    },
-    {
+    });
+  }
+
+  if (isAdmin || department === 'shipping') {
+    items.push({
       label: 'Shipping',
       href: '/shipping',
       children: [
@@ -26,15 +34,14 @@ function getNavItems(isAdmin: boolean) {
         { label: 'Dock View', href: '/shipping/doors' },
         { label: 'History', href: '/shipping/history' },
       ],
-    },
-  ];
+    });
+  }
 
   // Only show Admin link to admin users
   if (isAdmin) {
     items.push({
       label: 'Admin',
       href: '/admin',
-      children: undefined as any,
     });
   }
 
@@ -44,7 +51,7 @@ function getNavItems(isAdmin: boolean) {
 export function Navigation() {
   const pathname = usePathname();
   const { user, logout } = useAuth();
-  const navItems = getNavItems(user?.is_admin || false);
+  const navItems = getNavItems(user?.department || '', user?.is_admin || false);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
