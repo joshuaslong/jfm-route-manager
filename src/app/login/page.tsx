@@ -39,7 +39,7 @@ export default function LoginPage() {
               className="h-28 w-auto"
             />
           </div>
-          <h1 className="text-xl font-bold text-gray-900">Route Manager</h1>
+          <h1 className="text-xl font-medium text-gray-900 tracking-tight">Route Manager</h1>
           <p className="text-gray-600 mt-1">Sign in to continue</p>
         </div>
 

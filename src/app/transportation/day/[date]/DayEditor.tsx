@@ -363,7 +363,8 @@ export function DayEditor({ date, dayOfWeek }: DayEditorProps) {
         source: 'assignment' as const,
       };
 
-      setRows([...rows.map(r => ({ ...r, source: 'assignment' as const })), newRow]);
+      // Add new row at the top instead of the bottom
+      setRows([newRow, ...rows.map(r => ({ ...r, source: 'assignment' as const }))]);
       setEditingId(data.id);
       setIsNewRow(true);
       setHasAssignments(true);
