@@ -31,11 +31,11 @@ CREATE POLICY "Allow all for authenticated" ON app_users
 
 -- Insert initial users with password '1234'
 INSERT INTO app_users (username, password_hash, full_name, department, is_admin) VALUES
-  ('greg.guadarrama', '1234', 'Greg Guadarrama', 'shipping', FALSE),
-  ('evan.mcmechan', '1234', 'Evan McMechan', 'shipping', FALSE),
-  ('joshua.long', '1234', 'Joshua Long', 'shipping', TRUE),
-  ('shawn.martin', '1234', 'Shawn Martin', 'transportation', FALSE),
-  ('dwight.sensenig', '1234', 'Dwight Sensenig', 'transportation', FALSE),
-  ('cody.baker', '1234', 'Cody Baker', 'shipping', FALSE),
-  ('carlos.reyes', '1234', 'Carlos Reyes', 'shipping', FALSE)
+  ('gguadarrama', '1234', 'Greg Guadarrama', 'shipping', FALSE),
+  ('emcmechan', '1234', 'Evan McMechan', 'shipping', FALSE),
+  ('jlong', '1234', 'Joshua Long', 'shipping', TRUE),
+  ('smartin', '1234', 'Shawn Martin', 'transportation', FALSE),
+  ('dsensenig', '1234', 'Dwight Sensenig', 'transportation', FALSE),
+  ('cbaker', '1234', 'Cody Baker', 'shipping', FALSE),
+  ('creyes', '1234', 'Carlos Reyes', 'shipping', FALSE)
 ON CONFLICT (username) DO NOTHING;
