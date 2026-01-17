@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { getTodayDate } from '@/lib/utils/dateHelpers';
 import { useAuth } from '@/lib/auth/AuthContext';
@@ -68,8 +69,15 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center mr-8">
-              <Link href="/" className="text-xl font-bold text-gray-900">
-                Route Manager
+              <Link href="/" className="flex items-center gap-3">
+                <Image
+                  src="/images/logo.webp"
+                  alt="John F. Martin & Sons"
+                  width={48}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+                <span className="text-lg font-bold text-gray-900">Route Manager</span>
               </Link>
             </div>
             <div className="hidden sm:flex sm:space-x-4">
