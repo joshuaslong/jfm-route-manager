@@ -206,8 +206,8 @@ export default function DoorsPage() {
     const supabase = createClient();
 
     // First, find the trailer by number
-    const { data: trailer, error: trailerError } = await supabase
-      .from('trailers')
+    const { data: trailer, error: trailerError } = await (supabase
+      .from('trailers') as any)
       .select('id')
       .eq('number', STORAGE_TRAILER.number)
       .single();
@@ -223,7 +223,7 @@ export default function DoorsPage() {
       .from('door_assignments') as any)
       .insert({
         door_number: STORAGE_TRAILER.doorNumber,
-        trailer_id: trailer.id,
+        trailer_id: (trailer as { id: string }).id,
         daily_assignment_id: null,
         date: deliveryDateStr,
         move_status: 'at_door',
