@@ -19,6 +19,17 @@ CREATE INDEX IF NOT EXISTS idx_app_users_username ON app_users(username);
 -- Note: In production, use proper password hashing. For now using simple hash.
 -- The password '1234' will be hashed client-side before comparison.
 
+-- Enable RLS
+ALTER TABLE app_users ENABLE ROW LEVEL SECURITY;
+
+-- Allow read/write for anonymous (API access)
+CREATE POLICY "Allow all for anon" ON app_users
+  FOR ALL TO anon USING (true) WITH CHECK (true);
+
+CREATE POLICY "Allow all for authenticated" ON app_users
+  FOR ALL TO authenticated USING (true) WITH CHECK (true);
+
+-- Insert initial users with password '1234'
 INSERT INTO app_users (username, password_hash, full_name, department, is_admin) VALUES
   ('greg.guadarrama', '1234', 'Greg Guadarrama', 'shipping', FALSE),
   ('evan.mcmechan', '1234', 'Evan McMechan', 'shipping', FALSE),
