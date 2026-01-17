@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import { useAuth } from '@/lib/auth/AuthContext';
 
 export default function LoginPage() {
@@ -34,12 +33,10 @@ export default function LoginPage() {
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <Image
+            <img
               src="/images/logo.webp"
               alt="John F. Martin & Sons"
-              width={200}
-              height={120}
-              priority
+              className="h-28 w-auto"
             />
           </div>
           <h1 className="text-xl font-bold text-gray-900">Route Manager</h1>
