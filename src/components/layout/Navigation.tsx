@@ -77,7 +77,7 @@ export function Navigation() {
                   height={32}
                   className="h-8 w-auto"
                 />
-                <span className="text-lg font-bold text-gray-900">Route Manager</span>
+                <span className="text-lg font-medium text-gray-900 tracking-tight">Route Manager</span>
               </Link>
             </div>
             <div className="hidden sm:flex sm:space-x-4">
