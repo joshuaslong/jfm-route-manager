@@ -60,8 +60,8 @@ export default function TemplatesPage() {
       ? Math.max(...templates.map(t => t.sort_order)) + 1
       : 0;
 
-    const { data, error } = await supabase
-      .from('weekly_templates')
+    const { data, error } = await (supabase
+      .from('weekly_templates') as any)
       .insert({
         day_of_week: selectedDay,
         sort_order: maxSortOrder,
@@ -106,8 +106,8 @@ export default function TemplatesPage() {
 
   const handleUpdateField = async (id: string, field: string, value: string | null) => {
     const supabase = createClient();
-    const { error } = await supabase
-      .from('weekly_templates')
+    const { error } = await (supabase
+      .from('weekly_templates') as any)
       .update({ [field]: value })
       .eq('id', id);
 

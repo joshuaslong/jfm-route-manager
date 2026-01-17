@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { formatFullDate, formatDispatchTime, formatDate, getNextBusinessDay } from '@/lib/utils/dateHelpers';
 import { createClient } from '@/lib/supabase/client';
-import { useShippingPreferences } from '@/hooks/useShippingPreferences';
+import { useShippingPreferences, SortOption } from '@/hooks/useShippingPreferences';
 
 interface Loader {
   id: string;
